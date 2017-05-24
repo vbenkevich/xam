@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BBA96403-6CAF-426F-B652-F4426375C30C}</ProjectGuid>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <UseMSBuildEngine>true</UseMSBuildEngine>
+    <OutputType>Library</OutputType>
+    <RootNamespace>NLib.UI</RootNamespace>
+    <AssemblyName>NLib.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Bindings\BindingStorage.cs" />
+    <Compile Include="Bindings\BindingCollection.cs" />
+    <Compile Include="Bindings\IBindingCollection.cs" />
+    <Compile Include="Bindings\IBinding.cs" />
+    <Compile Include="Bindings\BindingBuilder.cs" />
+    <Compile Include="Bindings\IBindingBuilder.cs" />
+    <Compile Include="Bindings\IValueConverter.cs" />
+    <Compile Include="Bindings\IContextUpdatCycleBreaker.cs" />
+    <Compile Include="Bindings\Converters\IntToString.cs" />
+    <Compile Include="Bindings\Converters\Converters.cs" />
+    <Compile Include="Utils\InputViewModel.cs" />
+    <Compile Include="MVVM\AsyncCommand.cs" />
+    <Compile Include="MVVM\AsyncCommandBase.cs" />
+    <Compile Include="MVVM\AsyncCommandT.cs" />
+    <Compile Include="MVVM\CommandHelper.cs" />
+    <Compile Include="MVVM\IAsyncCommand.cs" />
+    <Compile Include="MVVM\IExtendedCommand.cs" />
+    <Compile Include="MVVM\ObservableObject.cs" />
+    <Compile Include="MVVM\SwitchableCommand.cs" />
+    <Compile Include="MVVM\SyncCommand.cs" />
+    <Compile Include="MVVM\SyncCommandBase.cs" />
+    <Compile Include="MVVM\SyncCommandT.cs" />
+    <Compile Include="Bindings\BindingPartViewUpdater.cs" />
+    <Compile Include="Bindings\BindingPartContextUpdater.cs" />
+    <Compile Include="Bindings\Binding.cs" />
+    <Compile Include="MVVM\ViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Bindings\" />
+    <Folder Include="Collection\" />
+    <Folder Include="Bindings\Converters\" />
+    <Folder Include="Utils\" />
+    <Folder Include="MVVM\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+</Project>
