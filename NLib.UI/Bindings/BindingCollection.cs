@@ -77,6 +77,11 @@ namespace NLib.UI.Bindings
 
         private bool TrySetContext(TContext context)
         {
+            if (currentContex == context)
+            {
+                return false;
+            }
+
             if (currentContex != null)
             {
                 currentContex.PropertyChanged -= OnContextPropertyChanged;
