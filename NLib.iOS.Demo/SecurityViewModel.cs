@@ -3,7 +3,7 @@ using NLib.UI.Bindings;
 
 namespace NLib.iOS.Demo
 {
-    public class SecurityViewModel : ObservableObject
+    public class SecurityViewModel : ViewModel
     {
         public SecurityViewModel()
         {

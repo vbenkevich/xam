@@ -55,6 +55,11 @@
     <Compile Include="Bindings\BindingPartContextUpdater.cs" />
     <Compile Include="Bindings\Binding.cs" />
     <Compile Include="MVVM\ViewModel.cs" />
+    <Compile Include="MVVM\ViewModelWrapper.cs" />
+    <Compile Include="MVVM\IViewController.cs" />
+    <Compile Include="MVVM\ViewModelLocator.cs" />
+    <Compile Include="MVVM\IViewModelResolver.cs" />
+    <Compile Include="MVVM\Enums.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Bindings\" />
