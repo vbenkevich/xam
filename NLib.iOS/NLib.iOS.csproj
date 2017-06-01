@@ -57,7 +57,8 @@
     <Compile Include="TableView\DataSource.cs" />
     <Compile Include="TableView\StreachHeaderDelegate.cs" />
     <Compile Include="Controllers\ViewController.cs" />
-    <Compile Include="Controllers\IViewController.cs" />
+    <Compile Include="Controllers\TableViewController.cs" />
+    <Compile Include="Controllers\TabBarViewController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NLib.UI\NLib.UI.csproj">

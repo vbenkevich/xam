@@ -1,46 +1,46 @@
 ﻿using System;
-using Foundation;
 using UIKit;
+using Foundation;
 using NLib.UI;
 
 namespace NLib.iOS.Controllers
 {
-    public class ViewController<TViewModel> : UIViewController, IViewController<TViewModel> where TViewModel : ViewModel
+    public class TabBarViewController<TViewModel> : UITabBarController, IViewController<TViewModel> where TViewModel : ViewModel
     {
         readonly ViewModelWrapper<TViewModel> viewModelWrapper;
 
-        public ViewController()
+        public TabBarViewController()
         {
             viewModelWrapper = new ViewModelWrapper<TViewModel>(this);
         }
 
-        public ViewController(IntPtr handle) : base(handle)
+        public TabBarViewController(IntPtr handle) : base(handle)
         {
             viewModelWrapper = new ViewModelWrapper<TViewModel>(this);
         }
 
-        public ViewController(string nibNile, NSBundle bundle) : base(nibNile, bundle)
+        public TabBarViewController(string nibNile, NSBundle bundle) : base(nibNile, bundle)
         {
             viewModelWrapper = new ViewModelWrapper<TViewModel>(this);
         }
 
-        public ViewController(NSCoder coder) : base(coder)
+        public TabBarViewController(NSCoder coder) : base(coder)
         {
             viewModelWrapper = new ViewModelWrapper<TViewModel>(this);
         }
 
-        public ViewController(NSObjectFlag flag) : base(flag)
+        public TabBarViewController(NSObjectFlag flag) : base(flag)
         {
             viewModelWrapper = new ViewModelWrapper<TViewModel>(this);
         }
 
-        public TViewModel ViewModel 
-        { 
-            get => viewModelWrapper.ViewModel; 
-            set => viewModelWrapper.ViewModel = value; 
+        public TViewModel ViewModel
+        {
+            get => viewModelWrapper.ViewModel;
+            set => viewModelWrapper.ViewModel = value;
         }
 
-        protected UpdateOrder AttachViewModelOrder 
+        protected UpdateOrder AttachViewModelOrder
         {
             get => viewModelWrapper.AttachViewModelOrder;
             set => viewModelWrapper.AttachViewModelOrder = value;
@@ -71,7 +71,7 @@ namespace NLib.iOS.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing) 
+            if (disposing)
             {
                 viewModelWrapper?.Dispose();
             }
@@ -80,3 +80,4 @@ namespace NLib.iOS.Controllers
         }
     }
 }
+
