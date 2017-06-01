@@ -60,6 +60,13 @@
     <Compile Include="MVVM\ViewModelLocator.cs" />
     <Compile Include="MVVM\IViewModelResolver.cs" />
     <Compile Include="MVVM\Enums.cs" />
+    <Compile Include="Utils\GCHelper.cs" />
+    <Compile Include="Navigation\INavigationService.cs" />
+    <Compile Include="Navigation\IDialogService.cs" />
+    <Compile Include="Navigation\Application.cs" />
+    <Compile Include="Navigation\IDetailsPresenter.cs" />
+    <Compile Include="Navigation\INavigtionStack.cs" />
+    <Compile Include="Navigation\NavigationServiceBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Bindings\" />
@@ -67,6 +74,7 @@
     <Folder Include="Bindings\Converters\" />
     <Folder Include="Utils\" />
     <Folder Include="MVVM\" />
+    <Folder Include="Navigation\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

@@ -1,10 +1,8 @@
 ﻿using System;
-using NLib.UI.Bindings;
-using NLib.UI.Tests.Utils;
-using NUnit.Framework;
-using NLib.UI.MVVM;
-using System.ComponentModel;
 using System.Threading.Tasks;
+using NUnit.Framework;
+using NLib.UI.Bindings;
+using NLib.UI.Utils;
 
 namespace NLib.UI.Tests.Bindings
 {

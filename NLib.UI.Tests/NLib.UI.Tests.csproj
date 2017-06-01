@@ -47,7 +47,6 @@
     <Compile Include="Bindings\TestView.cs" />
     <Compile Include="Utils\InputViewModelTests.cs" />
     <Compile Include="PropertyChangedSubscriber.cs" />
-    <Compile Include="GCHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Bindings\" />

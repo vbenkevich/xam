@@ -16,16 +16,6 @@ namespace NLib.iOS.Demo
         {
             base.ViewDidLoad();
 
-            WeekRefCounter.Clear();
-            refCounterLabel.Text = $"memory leaks: {WeekRefCounter.Count}";
-
-            WeekRefCounter.Add(this);
-            WeekRefCounter.Add(symbolLabel);
-            WeekRefCounter.Add(sharesField);
-            WeekRefCounter.Add(priceField);
-            WeekRefCounter.Add(totalLabel);
-            WeekRefCounter.Add(ViewModel);
-
             this.Bind(symbolLabel)
                 .To<SecurityViewModel>(vm => vm.Symbol);
 
@@ -40,11 +30,22 @@ namespace NLib.iOS.Demo
                 .To<SecurityViewModel>(vm => vm.LastPrice);
         }
 
-        public override void ViewDidAppear(bool animated)
+        public override async void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
 
             ViewModel.Symbol = "AAPL";
+
+            await NLib.UI.Utils.GCHelper.ForceCollect();
+            WeekRefCounter.Recalculate();
+            refCounterLabel.Text = $"uncollected objects: {WeekRefCounter.Count}";
+
+            WeekRefCounter.Add(this);
+            WeekRefCounter.Add(symbolLabel);
+            WeekRefCounter.Add(sharesField);
+            WeekRefCounter.Add(priceField);
+            WeekRefCounter.Add(totalLabel);
+            WeekRefCounter.Add(ViewModel);
         }
 
         class MoneyToString : IValueConverter<Money, string>

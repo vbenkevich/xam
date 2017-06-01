@@ -1,6 +1,7 @@
 ﻿using System;
 using Foundation;
 using UIKit;
+using NLib.iOS.Controllers;
 
 namespace NLib.iOS.Demo
 {
@@ -11,15 +12,11 @@ namespace NLib.iOS.Demo
     {
         // class-level declarations
 
-        public override UIWindow Window
-        {
-            get;
-            set;
-        }
+        public override UIWindow Window { get; set; }
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-            NLib.UI.ViewModelLocator.SetCurrentResolver(new SimpleResolver());
+            NLib.UI.ViewModelLocator.InitializeViewModelResolver();
 
             // Override point for customization after application launch.
             var splitViewController = (UISplitViewController)Window.RootViewController;
@@ -53,21 +50,13 @@ namespace NLib.iOS.Demo
         [Export("splitViewController:collapseSecondaryViewController:ontoPrimaryViewController:")]
         public bool CollapseSecondViewController(UISplitViewController splitViewController, UIViewController secondaryViewController, UIViewController primaryViewController)
         {
-            if (secondaryViewController.GetType() == typeof(UINavigationController) &&
+            if (secondaryViewController.GetType() == typeof(NLibNavigationController) &&
                 ((UINavigationController)secondaryViewController).TopViewController.GetType() == typeof(DetailViewController) &&
                 ((DetailViewController)((UINavigationController)secondaryViewController).TopViewController).DetailItem == null)
             {
                 return true;
             }
             return false;
-        }
-    }
-
-    class SimpleResolver : NLib.UI.IViewModelResolver
-    {
-        public TViewModel Resolve<TViewModel>()
-        {
-            return Activator.CreateInstance<TViewModel>();
         }
     }
 }

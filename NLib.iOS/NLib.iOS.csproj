@@ -50,6 +50,7 @@
     <Folder Include="Bindings\" />
     <Folder Include="TableView\" />
     <Folder Include="Controllers\" />
+    <Folder Include="Navigation\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -59,6 +60,9 @@
     <Compile Include="Controllers\ViewController.cs" />
     <Compile Include="Controllers\TableViewController.cs" />
     <Compile Include="Controllers\TabBarViewController.cs" />
+    <Compile Include="Navigation\NavigationService.cs" />
+    <Compile Include="Navigation\NavigationMap.cs" />
+    <Compile Include="Navigation\NLibNavigationController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NLib.UI\NLib.UI.csproj">

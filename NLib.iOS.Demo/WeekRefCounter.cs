@@ -13,17 +13,15 @@ namespace NLib.iOS.Demo
             references = new List<WeakReference>();
         }
 
-        public static int Count => references.Count();
+        public static int Count => references.Count;
 
         public static void Add(object obj)
         {
             references.Add(new WeakReference(obj));
         }
 
-        public static void Clear()
+        public static async void Recalculate()
         {
-            GC.Collect();
-
             references = new List<WeakReference>(references.Where(r => r.IsAlive));
         }
     }

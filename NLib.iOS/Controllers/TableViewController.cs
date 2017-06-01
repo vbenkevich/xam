@@ -40,6 +40,8 @@ namespace NLib.iOS.Controllers
             set => viewModelWrapper.ViewModel = value;
         }
 
+        ViewModel IViewController.ViewModel { get => ViewModel; }
+
         protected UpdateOrder AttachViewModelOrder
         {
             get => viewModelWrapper.AttachViewModelOrder;
