@@ -1,32 +1,20 @@
 using System;
 using UIKit;
-using NLib.iOS.Bindings;
 using NLib.UI.Bindings;
+using NLib.iOS.Bindings;
+using NLib.iOS.Controllers;
 
 namespace NLib.iOS.Demo
 {
-    public partial class BindingsController : UIViewController
+    public partial class BindingsController : ViewController<SecurityViewModel>
     {
         public BindingsController(IntPtr handle) : base(handle)
         {
         }
 
-        private SecurityViewModel viewModel;
-        public SecurityViewModel ViewModel
-        {
-            get { return viewModel; }
-            set
-            {
-                if (viewModel == value) return;
-                viewModel = value;
-                this.SetContext(viewModel);
-            }
-        }
-
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            ViewModel = new SecurityViewModel();
 
             WeekRefCounter.Clear();
             refCounterLabel.Text = $"memory leaks: {WeekRefCounter.Count}";
