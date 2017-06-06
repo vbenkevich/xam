@@ -32,6 +32,18 @@ namespace NLib.iOS.Navigation
             list.Add(Tuple.Create(typeof(TSource), segueId));
         }
 
+        public bool TryGetSegueId<TViewModel>(UIViewController source, out string segueId)
+        {
+            segueId = null;
+
+            if (!seguesMap.TryGetValue(typeof(TViewModel), out List<Tuple<Type, string>> list))
+                return false;
+
+            segueId = list.FirstOrDefault(t => t.Item1 == source.GetType())?.Item2;
+
+            return segueId != null;
+        }
+
         public void RegisterController<TViewModel,TController>()
             where TController : UIViewController, IViewController<TViewModel>
             where TViewModel : ViewModel
@@ -43,22 +55,6 @@ namespace NLib.iOS.Navigation
             where TViewModel : ViewModel
         {
             return (UIViewController)Activator.CreateInstance(controllersMap[typeof(TViewModel)]);
-        }
-
-        public bool TryPerformSegue<TViewModel>(UIViewController source)
-        {
-            if (!seguesMap.TryGetValue(typeof(TViewModel), out List<Tuple<Type, string>> list))
-                return false;
-
-            var pair = list.FirstOrDefault(t => t.Item1 == source.GetType());
-
-            if (pair != null)
-            {
-                source.PerformSegue(pair.Item2, source);
-                return true;
-            }
-
-            return false;
         }
     }
 }

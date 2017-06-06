@@ -1,9 +1,9 @@
 ﻿﻿using System;
+using System.Threading.Tasks;
 using Foundation;
 using UIKit;
 using NLib.UI.Navigation;
 using NLib.UI;
-using System.Threading.Tasks;
 
 namespace NLib.iOS.Navigation
 {
@@ -11,6 +11,8 @@ namespace NLib.iOS.Navigation
     public class NLibNavigationController : UINavigationController, INavigtionStack, IUINavigationControllerDelegate
     {
         private TaskCompletionSource<UIViewController> currentTaskSource;
+
+        #region ctor
 
         public NLibNavigationController()
         {
@@ -32,6 +34,10 @@ namespace NLib.iOS.Navigation
         {
         }
 
+        #endregion
+
+        #region INavigtionStack
+
         public ViewModel TopViewModel => (TopViewController as IViewController).ViewModel;
 
         public override void PushViewController(UIViewController viewController, bool animated)
@@ -46,7 +52,11 @@ namespace NLib.iOS.Navigation
 
             var taskSource = currentTaskSource = new TaskCompletionSource<UIViewController>();
 
-            if (!NavigationMap.Instance.TryPerformSegue<TViewModel>(TopViewController))
+            if (NavigationMap.Instance.TryGetSegueId<TViewModel>(TopViewController, out string segueId))
+            {
+                TopViewController.PerformSegue(segueId, this);
+            }
+            else
             {
                 PushViewController(NavigationMap.Instance.CreateViewController<TViewModel>(), animate);
             }
@@ -66,6 +76,8 @@ namespace NLib.iOS.Navigation
         {
             DismissViewController(animate, null);
         }
+
+        #endregion
 
         public override void ViewDidLoad()
         {

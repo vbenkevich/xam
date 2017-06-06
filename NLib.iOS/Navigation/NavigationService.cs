@@ -15,7 +15,16 @@ namespace NLib.iOS.Navigation
 
         protected override Task<INavigtionStack> NewNaviagetionStack<TViewModel>()
         {
-            throw new NotImplementedException();
+            if (NavigationMap.Instance.TryGetSegueId<TViewModel>(UIApplication.SharedApplication.KeyWindow.vi out string segueId))
+            {
+                
+            }
+
+            var newStack = new NLibNavigationController();
+            newStack.TopViewController = 
+
+
+            return newStack;
         }
     }
 }
